@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>该页面是测试：jsonp跨域</h1>
+
+<button id="btn">点我获取数据</button>
+<script>
+   let btn=document.getElementById('btn');
+   btn.addEventListener('click',()=>{
+       let scriptNode=document.createElement('script');
+       scriptNode.src='http://localhost:3000/testGET?callback=getData';
+       window.getData=function (a) {
+           console.log(a);
+       }
+       document.body.appendChild(scriptNode);
+   })
+</script>
+</body>
+</html>

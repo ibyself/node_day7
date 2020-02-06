@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>该页面是测试：jQuery发送Ajax请求</h1>
+
+<button id="btn1">点我使用jQuery发送Ajax-GET请求</button>
+<button id="btn2">点我使用jQuery发送Ajax-POST请求</button>
+<script src="./js/jquery-1.12.4.js"></script>
+<script>
+    $('#btn1').click(function(){
+        //标准写法
+        let xhr=$.ajax('http://localhost:3000/testGET',{
+            method:'GET',
+            data:{
+                name:'sun',
+                age:22
+            },
+            success:function(data){
+                console.log(data)
+            },
+            error:function(err){
+                console.log(err);
+            }
+
+        })
+    });
+    $('#btn2').click(function(){
+        $.post('http://localhost:3000/testPOST',{name:'sun',age:22},(data,err)=>{
+            console.log(data,err);
+        });
+    })
+</script>
+</body>
+</html>
